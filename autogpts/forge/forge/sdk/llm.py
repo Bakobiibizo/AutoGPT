@@ -31,9 +31,7 @@ async def chat_completion_request(
                 # This is an example showing adding in the labels as helicone properties
                 kwargs["headers"][f"Helicone-Property-{label}"] = custom_labels[label]
 
-        resp = await openai.ChatCompletion.acreate(**kwargs)
-
-        return resp
+        return await openai.ChatCompletion.acreate(**kwargs)
     except Exception as e:
         LOG.error("Unable to generate ChatCompletion response")
         LOG.error(f"Exception: {e}")
